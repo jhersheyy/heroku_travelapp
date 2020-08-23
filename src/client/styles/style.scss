@@ -1,0 +1,143 @@
+$bgcolor: #c5c2c0;
+$highlighter: #e1ddda;
+$fontstyle: fantasy;
+$placeholderfont: monospace;
+$bradius: 30%;//    border-radius: 15%;
+$footercolor: #02346c;
+$headercolor : #e7bdb6;
+
+//debugging*{ border: 1px solid red !important; }
+
+header{
+    background-color: $headercolor;
+}
+
+body{
+    background: $bgcolor;
+    font-family: -apple-system, BlinkMacSystemFont, $fontstyle, sans-serif;
+}
+
+footer{
+    background-color: $footercolor;
+}
+
+a:hover{
+    color: $headercolor;
+}
+
+#entryHolder{
+    background-color: rgba(265,265,265,0.4);
+    padding: 20px;
+    border-radius: $bradius;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#app{
+    display: grid;
+    grid-auto-rows: min-content;
+    /* grid-template-columns:  */
+    height:minmax(100vh, auto);
+    background: $bgcolor;
+    color: #000000;
+    justify-content: left;
+    grid-gap: 1em;
+    font-size: 20px;
+    font-family: $fontstyle, sans-serif;
+    padding: 15px;
+}
+
+#countdown{
+    font-size: 18px;
+    color: $footercolor;
+    background-color: rgba(265,265,265,0.4);
+    width: auto;
+}
+.center{
+    text-align: center;
+}
+
+.mainimg{
+    width:80%;
+    text-align: center;
+    border-radius: $bradius;
+}
+
+.logo{
+    height:2em;  
+    width: auto;
+    margin: 5px 10px 5px 10px;
+}
+
+.secondary{
+    font-size: 15px;
+    justify-content: left;
+}
+
+.title{
+    font-size: 22px;
+    color: #ffffff;
+    margin: 15px 5px 10px 5px;
+}
+
+/*  Basic Styling To Override Default For Basic HTML Elements */
+h1{
+    font-size: 36px;
+}
+
+/* Reset style for HTML element on active to have no border*/
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+/* Style for Placeholder Text*/
+::placeholder { /* Firefox, Chrome, Opera */ 
+    color: #000000; 
+    font-family: $placeholderfont, sans-serif;
+    padding: 5px;
+} 
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+    color: #000000; 
+    font-family: $placeholderfont, sans-serif;
+    padding: 5px;
+
+} 
+  
+::-ms-input-placeholder { /* Microsoft Edge */ 
+    color: #000000; 
+    font-family: $placeholderfont, sans-serif;
+    padding: 5px;
+
+} 
+
+
+@media (min-width: 500px) and (max-width: 613px){
+    .mainimg{
+        width:40%;
+    }
+}
+
+@media (min-width: 614px){
+    #app{
+        display: flex;
+        /* grid-template-columns:  */
+        height:minmax(100vh, auto);
+        justify-content: left;
+        padding: 15px;
+        grid-gap: 0.5em;
+    }
+    #user{
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;      
+    }
+    .data{
+        width: 50vw;
+        text-align: center;
+        padding: 15px;
+        margin: 10px;
+    }
+}

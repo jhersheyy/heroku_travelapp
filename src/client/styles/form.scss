@@ -1,0 +1,53 @@
+$buttoncolor : #b7c8d9;
+$formcolor: #5a95c1;
+$highlighter: #e1ddda;
+
+input {
+    border: 1px solid $highlighter;
+    border-radius: 3px;
+    padding: 5px 20px;//40px;
+    background-color: $formcolor;
+    text-align: center;
+    line-height: 25px;
+    font-size: 15px;
+    margin: 10px 0;
+    width: 80vw;
+    font-family: monospace;
+}
+
+input:hover{
+    background-color: $buttoncolor;
+}
+
+label{
+    display:block;
+    font-size: 20px;
+}
+
+button{
+    width: 50vw;
+    background:$buttoncolor;
+    color: $formcolor;
+    font-size: 25px;
+    font-family: monospace;
+    border: 1px solid $highlighter;
+    box-shadow: 2px 4px 5px #444;
+}
+
+button:hover{
+    color: white;
+}
+
+@media (min-width: 614px){
+    input{
+       width: 100%; 
+    } 
+    label{
+        font-size: 25px;
+        padding-top: 10px;
+    }
+    button{
+        width: 60%;
+    }
+
+}
