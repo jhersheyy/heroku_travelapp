@@ -1,7 +1,10 @@
 // start.js
 const app = require('./server.js')
-let portnum = process.env.PORT || 8081;
-app.listen(portnum, listening);
+const PORT = process.env.PORT || 8081;
+const host = process.env.HOST || 'localhost';
+
+// let portnum = process.env.PORT || 8081;
+app.listen(PORT, host, listening);
 
 // Callback to debug
 function listening(){
