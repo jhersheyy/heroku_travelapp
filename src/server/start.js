@@ -1,7 +1,7 @@
 // start.js
 const app = require('./server.js')
 const PORT = process.env.PORT || 8081;
-const host = process.env.HOST || 'localhost' || '0.0.0.0';
+const host = process.env.HOST || '0.0.0.0'|| 'localhost' ;
 
 // let portnum = process.env.PORT || 8081;
 app.listen(PORT, host, listening);
