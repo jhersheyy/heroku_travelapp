@@ -111,6 +111,7 @@ const updateUI = async (date) => {
     allData["imgURL"] = picResult;
     return allData})//returns url for image
   .then(data=>{
+    console.log(data);
     let wData = data['weatherInfo'];
     let imgURL = data['imgURL'];
     let dest = displayDest(data);//gets string of destination
