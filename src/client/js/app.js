@@ -6,7 +6,7 @@ import backupimg from '../media/img_na.png'
  
 /* Global Variables */
 let allData= {};//client side copy of projectData, updates as process request
-const geoURL= 'http://api.geonames.org/postalCodeSearchJSON?placename='
+const geoURL= 'https://secure.geonames.org/postalCodeSearchJSON?placename='
 const geoKey= '&maxRows=1&countryBias=US&username=jhersheyy' //note the US bias
 //weatherURL's in function only (using template literals-were causing referenceErrors)
 const weatherKey= '430488ce7d904004b4252036356fc59d';

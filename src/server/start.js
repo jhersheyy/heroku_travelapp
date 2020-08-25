@@ -8,7 +8,7 @@ app.listen(PORT, host, listening);
 
 // Callback to debug
 function listening(){
-    console.log(`JH Travel App now running on port 8081`);
+    console.log(`JH Travel App now running on port ${PORT}`);
   };
 
 // // start.js
