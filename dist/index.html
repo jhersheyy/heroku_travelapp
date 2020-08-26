@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JH Travel App</title>
+<link href="main.css" rel="stylesheet"></head>
+<body>
+  <header>     
+    <img id="jhlogo" alt= "JH Logo" class ='logo'>
+    <div class="headline">
+      JH Travel App
+    </div>
+  </header>
+  <main id = "app">
+    <div id="user">
+      <label for="location">Enter destination here</label>
+      <input type="text" id="location" placeholder="Enter destination here">
+      <label for="dday">Departure Date: </label>
+      <input id="dday" type="date" min="2020-08-11" max="2021-08-11">
+      <div class="center">
+        <button id="generate" type = "submit"> Submit </button>
+      </div>
+    </div>
+    <div class ="center data">
+      <div class = "title"></div>
+      <div id = "entryHolder">
+        <img class = "mainimg">
+        <div id = "dest"></div>
+        <div id = "date"></div> 
+        <div id = "temp"></div>
+        <div class= "secondary">
+          <div id = "countdown"></div>
+          <div id = "max"></div>
+          <div id = "min"></div>
+          <div id = "clouds"></div>
+          <div id = "humidity"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class= "fttext">Images provided by <a href="https://pixabay.com/" target="_blank">Pixabay</a>.</div>
+    <div><img id= "pixlogo" alt="Pixabay Logo" class="logo"></div>
+  </footer>
+<script type="text/javascript" src="main.js"></script></body>
+</html>

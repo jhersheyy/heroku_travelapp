@@ -48,6 +48,7 @@ function performAction(e){
     })
     .then(function(pData){//use server data to query weather api
       try{
+        console.log(pData);
         pData = pData['geoInfo'];//need geonames result only
         let lat = pData.lat;
         let long =pData.long; 

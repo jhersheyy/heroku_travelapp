@@ -25,7 +25,8 @@ app.use(express.static('dist'));
 
 // Use dist html file for home route
   app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
+    // res.sendFile('dist/index.html')
+    res.sendFile(path.join(__dirname, '../public', 'index.html'))
 })
 app.get('/test', async (req, res) => {
   res.json({message: 'pass!'})
