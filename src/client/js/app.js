@@ -52,7 +52,6 @@ function performAction(e){
     })
     .then(function(pData){//use server data to query weather api
       try{
-        console.log(pData);
         pData = pData['geoInfo'];//need geonames result only
         let lat = pData.lat;
         let long =pData.long; 
@@ -116,7 +115,6 @@ const updateUI = async (date) => {
     allData["imgURL"] = picResult;
     return allData})//returns url for image
   .then(data=>{
-    console.log(data);
     let wData = data['weatherInfo'];
     let imgURL = data['imgURL'];
     let dest = displayDest(data);//gets string of destination
