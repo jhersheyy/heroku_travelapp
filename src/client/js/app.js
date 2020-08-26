@@ -36,11 +36,15 @@ function performAction(e){
     .then(function(geoData){//send g_info from api to server to save as project data
       try{
         let projData = {title: "geoInfo", data: {city: geoData.placeName, lat: geoData.lat, long: geoData.lng, region: geoData.adminName1, country: geoData.countryCode}};
-        postData('/add', projData)
+        // postData('/add', projData)
+        return projData
       } catch(error){
         console.log("error getting result from geonames API:: ",error)
         //return Promise.reject(error);
       }
+    })
+    .then(function(projData){
+      postData('/add', projData)
     })
     .then(function(){//get serverside data
       allData = getProjData();
