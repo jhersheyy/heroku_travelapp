@@ -125,9 +125,9 @@ const updateUI = async (date) => {
     }
     document.querySelector('.title').innerHTML="*~Trip Details~*"
     document.getElementById('dest').innerHTML = dest;
+    document.getElementById('countdown').innerHTML=(data.countdown.daysLeft+1)+" days away...";
     document.getElementById('date').innerHTML = "Departure: " + date;
     document.getElementById('temp').innerHTML = "Average Temp: " + wData.temp+"°F";
-    document.getElementById('countdown').innerHTML=data.countdown.daysLeft+"days away...";
     document.getElementById('max').innerHTML = "Daily max: " +wData.max+"°F"; 
     document.getElementById('min').innerHTML = "Daily min: " + wData.min+"°F";
     document.getElementById('clouds').innerHTML = "Cloud coverage: " + wData.clouds+"%";

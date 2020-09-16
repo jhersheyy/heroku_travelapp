@@ -9,7 +9,7 @@ function getCountdown(ddate){
     let d_full = Date.UTC(d.getFullYear(), (d.getMonth()), d.getDate());
     let dd_full= Date.UTC(dd.getFullYear(), (dd.getMonth()), dd.getDate()); 
     let result= Math.floor(dd_full-d_full)/day_in_ms;//conert back to days
-    return result;
+    return result;//(result===-1 ? 0.5:result);
   }
 
 /*Gets date after given date*/
@@ -20,11 +20,27 @@ function tomorrow(date){
   return copy.toISOString().slice(0,10);//formats into yyyy-mm-dd
 }
 
-/*converts date to last year of history*/
+/*converts future date to last year of history*/
 function lastYear(d){
+  // console.log("IN LAST YEAR: ",d);
   let date = new Date(d);
+  let daysLeft = getCountdown(date); //>=364 || <=-1830
   let copy = new Date(d);//date;
-  copy.setFullYear(date.getFullYear()-1);
+  let curr = new Date();
+  if (date.getMonth() > curr.getMonth()){//date month after curr month:
+    copy.setFullYear(curr.getFullYear()-1);//the year b4 this yr
+  }
+  else if(date.getMonth()==curr.getMonth()){//same month-> check date
+    if (date.getDate()>curr.getDate()){//date happens after current date-> set to last year
+      copy.setFullYear(curr.getFullYear()-1);
+    }
+    else{//date happens before current date+16 -> set to this year
+      copy.setFullYear(curr.getFullYear());
+    }
+  }
+  else{//date's month is before (<) curr month
+    copy.setFullYear(curr.getFullYear());//already happened this yr=past
+  }
   return copy.toISOString().slice(0,10); //formats into yyyy-mm-dd
 }
 
@@ -58,15 +74,36 @@ function getInfo(dataObj){
 
 /*Get Weatherbit API Weather Data*/
 const getWeather = async (lat, long, date, key)=>{
+    // console.log("IN GETWEATHER:", date);
     let weatherURL='';
-    if (getCountdown(date) > 16){
-      alert("Notice: Date too far in future! Finding last year's weather instead! =)");
-      date = lastYear(date);
-      let endDate = tomorrow(date);
-      weatherURL=`https://api.weatherbit.io/v2.0/history/daily?lat=${lat}&lon=${long}&start_date=${date}&end_date=${endDate}&units=I&key=${key}`;
-    }
-    else{
+    let daysLeft = getCountdown(date);
+    if ((daysLeft> -2) && (daysLeft<=14)){  //16 day forecast: -1,0,1,2,3,4,...13,14
       weatherURL=`https://api.weatherbit.io/v2.0/forecast/daily?&lat=${lat}&lon=${long}&units=I&key=${key}`;
+    }
+    else{//if daysLeft is outta bounds for current forecast
+      alert("Notice: Date out of bounds");
+      return {
+        max: "unavailable- ???",
+        min: "unavailable- ???",
+        temp: "unavailable- ???",
+        snow: "unavailable- ???",
+        clouds: "unavailable- ???",
+        humidity: "unavailable- ???"
+      }
+    ;
+      // alert("Notice: Date out of bounds- using old data");//has passed!");
+      // if ((daysLeft > -1830)&&(daysLeft<-2)){//api historical data limits
+      //   alert("daysLeft >-1830 && <-2");
+      //   let endDate = tomorrow(date);
+      //   weatherURL=`https://api.weatherbit.io/v2.0/history/daily?lat=${lat}&lon=${long}&start_date=${date}&end_date=${endDate}&units=I&key=${key}`;
+      // }
+      // //covered -1830 to -2, -2 to 14
+      // //daysleft > 14 or < -1830 //days left outta bounds: >14, <-1830
+      // else{//use last year to get most recent past date in historical range
+      //   date = lastYear(date);
+      //   let endDate = tomorrow(date);
+      //   weatherURL=`https://api.weatherbit.io/v2.0/history/daily?lat=${lat}&lon=${long}&start_date=${date}&end_date=${endDate}&units=I&key=${key}`;   
+      // }
     }
     const res = await fetch(weatherURL)
     try {
